@@ -1,0 +1,11 @@
+# eclipse
+eclipse/.metadata
+.DS_Store
+bin
+.metadata
+
+# gradle
+build
+.gradle
+
+# other

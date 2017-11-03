@@ -1,0 +1,67 @@
+[20:11:03] [main/INFO]: Setting user: Player986
+[20:11:05] [main/WARN]: Skipping bad option: lastServer:
+[20:11:05] [main/INFO]: LWJGL Version: 2.9.2
+[20:11:07] [main/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:AI Mod
+[20:11:09] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[20:11:09] [Thread-3/INFO]: Initializing LWJGL OpenAL
+[20:11:09] [Thread-3/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[20:11:09] [Thread-3/INFO]: OpenAL initialized.
+[20:11:09] [Sound Library Loader/INFO]: Sound engine started
+[20:11:11] [main/INFO]: Created: 512x512 textures-atlas
+[20:11:12] [main/WARN]: Skipping bad option: lastServer:
+[20:11:13] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[20:11:27] [Server thread/INFO]: Starting integrated minecraft server version 1.12.2
+[20:11:27] [Server thread/INFO]: Generating keypair
+[20:11:27] [Server thread/INFO]: Loaded 488 advancements
+[20:11:27] [Server thread/INFO]: Preparing start region for level 0
+[20:11:28] [Server thread/INFO]: Preparing spawn area: 68%
+[20:11:29] [Server thread/INFO]: Changing view distance to 12, from 10
+[20:11:29] [Server thread/INFO]: Player986[local:E:589b88d1] logged in with entity id 286 at (130.22477251830827, 65.0, 155.73224983169757)
+[20:11:29] [Server thread/INFO]: Player986 joined the game
+[20:11:30] [Server thread/INFO]: Saving and pausing game...
+[20:11:30] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[20:11:30] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[20:11:30] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[20:12:39] [main/INFO]: Loaded 9 advancements
+[20:12:51] [main/INFO]: Loaded 9 advancements
+[20:13:32] [Server thread/INFO]: Saving and pausing game...
+[20:13:32] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[20:13:32] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[20:13:32] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[20:13:33] [Server thread/INFO]: Stopping server
+[20:13:33] [Server thread/INFO]: Saving players
+[20:13:33] [Server thread/INFO]: Player986 lost connection: Disconnected
+[20:13:33] [Server thread/INFO]: Player986 left the game
+[20:13:33] [Server thread/INFO]: Stopping singleplayer server as player logged out
+[20:13:33] [Server thread/INFO]: Saving worlds
+[20:13:33] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[20:13:33] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[20:13:33] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[21:02:32] [Server thread/INFO]: Starting integrated minecraft server version 1.12.2
+[21:02:32] [Server thread/INFO]: Generating keypair
+[21:02:32] [Server thread/INFO]: Loaded 488 advancements
+[21:02:32] [Server thread/INFO]: Preparing start region for level 0
+[21:02:33] [Server thread/INFO]: Changing view distance to 12, from 10
+[21:02:33] [Server thread/INFO]: Player986[local:E:c9c3479a] logged in with entity id 4498 at (126.73566938172803, 64.0, 124.67180038885112)
+[21:02:33] [Server thread/INFO]: Player986 joined the game
+[21:02:34] [Server thread/INFO]: Saving and pausing game...
+[21:02:34] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[21:02:34] [main/INFO]: Loaded 9 advancements
+[21:02:34] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[21:02:34] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[21:03:40] [Server thread/INFO]: Saving and pausing game...
+[21:03:40] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[21:03:40] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[21:03:40] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[21:03:43] [Server thread/INFO]: Stopping server
+[21:03:43] [Server thread/INFO]: Saving players
+[21:03:43] [Server thread/INFO]: Player986 lost connection: Disconnected
+[21:03:43] [Server thread/INFO]: Player986 left the game
+[21:03:43] [Server thread/INFO]: Stopping singleplayer server as player logged out
+[21:03:43] [Server thread/INFO]: Saving worlds
+[21:03:43] [Server thread/INFO]: Saving chunks for level 'New World'/overworld
+[21:03:43] [Server thread/INFO]: Saving chunks for level 'New World'/the_nether
+[21:03:43] [Server thread/INFO]: Saving chunks for level 'New World'/the_end
+[21:03:46] [main/INFO]: Stopping!
+[21:03:46] [main/INFO]: SoundSystem shutting down...
+[21:03:46] [main/WARN]: Author: Paul Lamb, www.paulscode.com
