@@ -1,0 +1,14 @@
+[11:16:14] [main/INFO]: Setting user: Player69
+[11:16:16] [main/WARN]: Skipping bad option: lastServer:
+[11:16:16] [main/INFO]: LWJGL Version: 2.9.2
+[11:16:19] [main/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:AI Mod
+[11:16:20] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[11:16:20] [Thread-3/INFO]: Initializing LWJGL OpenAL
+[11:16:20] [Thread-3/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[11:16:20] [Thread-3/INFO]: OpenAL initialized.
+[11:16:20] [Sound Library Loader/INFO]: Sound engine started
+[11:16:22] [main/INFO]: Created: 512x512 textures-atlas
+[11:16:23] [main/WARN]: Skipping bad option: lastServer:
+[11:16:25] [main/INFO]: Stopping!
+[11:16:25] [main/INFO]: SoundSystem shutting down...
+[11:16:25] [main/WARN]: Author: Paul Lamb, www.paulscode.com

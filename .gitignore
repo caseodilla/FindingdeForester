@@ -1,6 +1,8 @@
 # eclipse
-eclipse/.metadata
-.metadata
-.DS_Store
-
-# other
+FindingDeForester/*.metadata
+FindingDeForester/*.launch
+FindingDeForester/*.DS_Store
+FindingDeForester/build/
+FindingDeForester/.gradle/
+FindingDeForester/.settings/
+FindingDeForester/eclipse/.metadata/
