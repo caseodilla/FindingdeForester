@@ -1,0 +1,16 @@
+[
+{
+  "modid": "eaim",
+  "name": "AI Mod",
+  "description": "Deforestation AI Mod",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["James Greenwell","Casey Hayes"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
