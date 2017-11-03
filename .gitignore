@@ -1,4 +1,4 @@
-# eclipse
+# stuff that changes unnecessarily
 FindingDeForester/*.metadata
 FindingDeForester/*.launch
 FindingDeForester/*.DS_Store
@@ -6,3 +6,8 @@ FindingDeForester/build/
 FindingDeForester/.gradle/
 FindingDeForester/.settings/
 FindingDeForester/eclipse/.metadata/
+FindingDeForester/run/logs/
+FindingDeForester/run/config/
+.metadata/
+RemoteSystemTempFiles/
+
