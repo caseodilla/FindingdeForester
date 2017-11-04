@@ -6,10 +6,8 @@ FindingDeForester/build/
 FindingDeForester/.gradle/
 FindingDeForester/.settings/
 FindingDeForester/eclipse/.metadata/
-FindingDeForester/run/logs/
-FindingDeForester/run/config/
 .metadata/
-RemoteSystemTempFiles
+RemoteSystemsTempFiles/
 .DS_Store
 FindingDeForester/run/*
 
