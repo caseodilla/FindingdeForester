@@ -1,4 +1,4 @@
-# stuff that changes unnecessarily
+#stuff that changes unnecessarily
 FindingDeForester/*.metadata
 FindingDeForester/*.launch
 FindingDeForester/*.DS_Store
@@ -10,4 +10,6 @@ FindingDeForester/run/logs/
 FindingDeForester/run/config/
 .metadata/
 RemoteSystemTempFiles/
+.DS_Store
+FindingDeForester/run/*
 
