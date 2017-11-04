@@ -10,3 +10,4 @@ FindingDeForester/eclipse/.metadata/
 RemoteSystemsTempFiles/
 .DS_Store
 FindingDeForester/run/*
+FindingDeForester/bin/.gitignore
