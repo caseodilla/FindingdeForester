@@ -2,7 +2,9 @@ package edu.elon.ai.proxy;
 
 import edu.elon.ai.entities.EntityAI;
 import edu.elon.ai.items.ModItems;
+import edu.elon.ai.renderers.RenderAIPlayer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderPlayer;
@@ -13,16 +15,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy{
    
-	@SuppressWarnings("deprecation")
 	@Override
     public void preInit(FMLPreInitializationEvent e) {
-		RenderingRegistry.registerEntityRenderingHandler(EntityAI.class, new RenderPlayer(Minecraft.getMinecraft().getRenderManager()));
-        super.preInit(e);
-        
+        super.preInit(e); 
     }
 
     @Override
     public void init(FMLInitializationEvent e) {
+    	RenderingRegistry.registerEntityRenderingHandler(EntityAI.class, new RenderAIPlayer(Minecraft.getMinecraft().getRenderManager(),new ModelBiped(1.0F,0.0F,64,64),0.5F));
         super.init(e);
     }
 
