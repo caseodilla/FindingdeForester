@@ -11,3 +11,4 @@ RemoteSystemsTempFiles/
 .DS_Store
 FindingDeForester/run/*
 FindingDeForester/bin/.gitignore
+.recommenders
