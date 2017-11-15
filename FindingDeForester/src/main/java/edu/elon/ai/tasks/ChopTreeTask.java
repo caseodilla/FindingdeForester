@@ -68,7 +68,7 @@ public class ChopTreeTask extends EntityAIBase{
      */
     public void setMutexBits(int mutexBitsIn)
     {
-        this.mutexBits = mutexBitsIn;
+        //this.mutexBits = mutexBitsIn;
     }
 
 }
