@@ -8,6 +8,8 @@ import org.junit.Test;
 
 public class TravelingSalesmanTest {
 
+	//this is basically TSP_GA from the website
+	//http://www.theprojectspot.com/tutorial-post/applying-a-genetic-algorithm-to-the-travelling-salesman-problem/5
 	@Test
 	public void test() {
 		ArrayList<Location3D> locations = new ArrayList<Location3D>();
