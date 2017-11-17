@@ -17,3 +17,4 @@ FindingDeForester/run/o*
 FindingDeForester/run/r*
 FindingDeForester/bin/.gitignore
 .recommenders
+FindingDeForester/bin/edu/elon/ai/*/*.class
