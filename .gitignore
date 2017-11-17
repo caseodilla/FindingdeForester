@@ -9,6 +9,11 @@ FindingDeForester/eclipse/.metadata/
 .metadata/
 RemoteSystemsTempFiles/
 .DS_Store
-FindingDeForester/run/*
+FindingDeForester/run/c*
+FindingDeForester/run/l*
+FindingDeForester/run/s*
+FindingDeForester/run/u*
+FindingDeForester/run/o*
+FindingDeForester/run/r*
 FindingDeForester/bin/.gitignore
 .recommenders
