@@ -22,4 +22,12 @@ public class Location3D {
 	public double getZ(){
 		return zCord;
 	}
+	
+	public double distanceTo(Location3D loc) {
+		double xDist = Math.abs(this.getX() - loc.getX());
+		double yDist = Math.abs(this.getY() - loc.getY());
+		double zDist = Math.abs(this.getZ() - loc.getZ());
+		
+		return Math.sqrt((xDist*xDist)+(yDist*yDist)+(zDist*zDist));
+	}
 }
