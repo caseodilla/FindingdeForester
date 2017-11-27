@@ -21,7 +21,7 @@ public class TravelPath {
 		}
 	}
 	
-	public TravelPath(ArrayList tp) {
+	public TravelPath(ArrayList<Location3D> tp) {
 		this.tp = tp;
 	}
 	
@@ -38,7 +38,7 @@ public class TravelPath {
 		return (Location3D)tp.get(pos);
 	}
 	
-	// set a location at a specific place in the arraylist
+	// set a location at a specific position in the arraylist
 	public void setLocation(int pos, Location3D loc) {
 		tp.set(pos, loc);
 		fitness = 0;
@@ -73,6 +73,11 @@ public class TravelPath {
 			distance = tpDist;
 		}
 		return distance;
+	}
+	
+	// return number of locations on a path
+	public int pathSize() {
+		return tp.size();
 	}
 	
 	// check if a location is already in the path
