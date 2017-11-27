@@ -1,6 +1,6 @@
 package edu.elon.ai.proxy;
 
-import edu.elon.ai.entities.EntityAIPlayer;
+import edu.elon.ai.entities.AIPlayer;
 import edu.elon.ai.items.ModItems;
 import edu.elon.ai.renderers.RenderAIPlayer;
 import net.minecraft.client.Minecraft;
@@ -22,7 +22,7 @@ public class ClientProxy extends CommonProxy{
 
     @Override
     public void init(FMLInitializationEvent e) {
-    	RenderingRegistry.registerEntityRenderingHandler(EntityAIPlayer.class, new RenderAIPlayer(Minecraft.getMinecraft().getRenderManager(),new ModelBiped(1.0F,0.0F,64,64),0.5F));
+    	RenderingRegistry.registerEntityRenderingHandler(AIPlayer.class, new RenderAIPlayer(Minecraft.getMinecraft().getRenderManager(),new ModelBiped(1.0F,0.0F,64,64),0.5F));
         super.init(e);
     }
 

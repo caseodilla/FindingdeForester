@@ -1,13 +1,13 @@
 package edu.elon.ai.tasks;
 
-import edu.elon.ai.entities.EntityAIPlayer;
+import edu.elon.ai.entities.AIPlayer;
 import net.minecraft.entity.ai.EntityAIBase;
 
 public class ChopTreeTask extends EntityAIBase{
 	
-	private final EntityAIPlayer entityAIPlayer;
+	private final AIPlayer entityAIPlayer;
 	
-	public ChopTreeTask(EntityAIPlayer entityAIPlayer){
+	public ChopTreeTask(AIPlayer entityAIPlayer){
 		this.entityAIPlayer = entityAIPlayer;
 	}
     /**
