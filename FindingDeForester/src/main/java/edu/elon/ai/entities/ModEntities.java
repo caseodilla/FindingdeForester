@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class ModEntities {
 	public static void registerEntities() {
-		registerEntity(AIPlayer.class,"AI_NPC",80,3,true,0x008B8B,0xDAA520);
+		registerEntity(EntityAIPlayer.class,"AI_NPC",80,3,true,0x008B8B,0xDAA520);
 	}
 	
 	private static int entityID = 0;

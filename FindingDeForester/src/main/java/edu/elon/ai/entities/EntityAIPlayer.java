@@ -1,26 +1,39 @@
 package edu.elon.ai.entities;
 
 import java.util.ArrayList;
-import net.minecraft.entity.ai.EntityAITradePlayer;
+
+import javax.annotation.Nullable;
+
+import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import com.jcraft.jorbis.Block;
 
 import edu.elon.ai.datastructures.Location3D;
+import edu.elon.ai.tasks.InteractWithPlayer;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAITradePlayer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class AIPlayer extends EntityCreature{
+public class EntityAIPlayer extends EntityCreature{
 	
 	ArrayList<Location3D> woodBlockTargets;
+	EntityPlayer player;
 	
-	public AIPlayer(World worldIn) {
+	public EntityAIPlayer(World worldIn) {
 		super(worldIn);
 		//set the home location and make the distance it can travel unbound
 		this.setHomePosAndDistance(this.getPosition(), -1);
 		woodBlockTargets = new ArrayList<Location3D>();
 		setWoodBlockTargets(worldIn,15,5);
+		//give the AIPlayer an axe
+		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
+		System.out.println(this.getHeldItem(EnumHand.MAIN_HAND));
 		//this.navigator.tryMoveToXYZ(x, y, z, speedIn);
 		this.setupAITasks();
 	}
@@ -52,7 +65,7 @@ public class AIPlayer extends EntityCreature{
 	}
 	
 	private void setupAITasks(){
-        //this.tasks.addTask(1, new EntityAITradePlayer(this));
+        this.tasks.addTask(1, new InteractWithPlayer(this));
 	}
 	
 	private void clearAITasks(){
@@ -62,6 +75,16 @@ public class AIPlayer extends EntityCreature{
 	public boolean isAIEnabled()
 	{
 	   return true;
+	}
+
+    public void setPlayer(@Nullable EntityPlayer player)
+    {
+        this.player = player;
+    }
+	
+	public EntityPlayer getPlayer() {
+		// TODO Auto-generated method stub
+		return player;
 	}
 	
 	

@@ -1,16 +1,14 @@
 package edu.elon.ai.event;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import org.lwjgl.input.Keyboard;
 
+import edu.elon.ai.entities.EntityAIPlayer;
 import edu.elon.ai.ingame.Controller;
-import edu.elon.ai.items.ModItems;
 
 public class EventHandlerCommon {
 	
@@ -30,8 +28,18 @@ public class EventHandlerCommon {
 	    				Controller c = new Controller((EntityPlayer) e.getEntity());
 	    			}
 	    		};
-	    	}
-	        
+	    	}  
 	    }
 	}
+	
+    @SubscribeEvent
+    public void onAIPlayerClick(EntityInteract e)
+    {
+        if(e.getTarget() instanceof EntityAIPlayer){
+        	EntityPlayer player = e.getEntityPlayer();
+        	EntityAIPlayer p = (EntityAIPlayer) e.getTarget();
+        	p.setPlayer(player);
+        	
+        }
+    }
 }
