@@ -6,7 +6,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 
-//much of this class is based on 
+//much of this class is based on the EntityAITradePlayer task 
 public class InteractWithPlayer extends EntityAIBase{
 
     private final EntityAIPlayer aiPlayer;
@@ -59,7 +59,6 @@ public class InteractWithPlayer extends EntityAIBase{
      */
     public void startExecuting()
     {
-    	System.out.println("Started Executing");
         this.aiPlayer.getNavigator().clearPathEntity();
     }
 

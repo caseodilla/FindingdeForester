@@ -32,11 +32,5 @@ public class ClientProxy extends CommonProxy{
     public void postInit(FMLPostInitializationEvent e) {
         super.postInit(e);
     }
-    //Client side GUI stuff
-	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		// TODO Auto-generated method stub
-		return null;
-	}
     
 }

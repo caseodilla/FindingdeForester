@@ -32,10 +32,10 @@ public final class ModItems {
 		public static void registerItems(final RegistryEvent.Register<Item> event) {
 			final IForgeRegistry<Item> registry = event.getRegistry();
 			//name the item
-			AI_EGG.setRegistryName(Reference.MOD_ID,Reference.AI_EGG_REGISTRY_NAME);
-			//register the item
-			registry.register(AI_EGG);
-			ITEMS.add(AI_EGG);
+//			AI_EGG.setRegistryName(Reference.MOD_ID,Reference.AI_EGG_REGISTRY_NAME);
+//			//register the item
+//			registry.register(AI_EGG);
+//			ITEMS.add(AI_EGG);
 		}
 
 	}
