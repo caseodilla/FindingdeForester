@@ -10,7 +10,7 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class MoveToPositionTask extends EntityAIBase{
+public class SeekAndDestroyTrees extends EntityAIBase{
 	
 	private final double MOVE_THRESHOLD = 2.0;
 	private boolean completed;
@@ -18,7 +18,7 @@ public class MoveToPositionTask extends EntityAIBase{
 	private Location3D loc;
 	private int locYOffset = 0;
 
-	public MoveToPositionTask(EntityLiving e, Location3D loc) {
+	public SeekAndDestroyTrees(EntityLiving e, Location3D loc) {
 		this.e = e;
 		this.loc = loc;
 		completed = false;
@@ -75,7 +75,7 @@ public class MoveToPositionTask extends EntityAIBase{
 	
 	
 	//This is a destroy leaves task within the overall move and destroy trees task
-	public class DestroyLeaves extends EntityAIBase implements Runnable{
+	public class DestroyLeaves implements Runnable{
 		private BlockPos woodPos;
 		private World world;
 		private HashSet<BlockPos> set;
@@ -115,11 +115,6 @@ public class MoveToPositionTask extends EntityAIBase{
 			}
 
 			
-		}
-		@Override
-		public boolean shouldExecute() {
-			// TODO Auto-generated method stub
-			return false;
 		}
 	}
 }
