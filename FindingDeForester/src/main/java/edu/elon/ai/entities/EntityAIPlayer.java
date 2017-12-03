@@ -17,7 +17,9 @@ import edu.elon.ai.tasks.InteractWithPlayer;
 import edu.elon.ai.tasks.MoveToPositionTask;
 import edu.elon.ai.ui.ModGUIHandler;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAITradePlayer;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -25,9 +27,13 @@ import net.minecraft.world.World;
 
 public class EntityAIPlayer extends EntityCreature{
 	
-	ArrayList<Location3D> woodBlockTargets;
-	EntityPlayer player;
-	InteractWithPlayer tradeTask;
+	private ArrayList<Location3D> woodBlockTargets;
+	private EntityPlayer player;
+	
+	//how far should the AI Player look for trees
+	private final int SCAN_RADIUS_LW = 20;
+	private final int SCAN_RADIUS_H = 5;
+	//InteractWithPlayer tradeTask;
 	
 	public EntityAIPlayer(World worldIn) {
 		super(worldIn);
@@ -37,15 +43,22 @@ public class EntityAIPlayer extends EntityCreature{
 		//give the AIPlayer an axe
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.IRON_AXE));
 		this.setAIMoveSpeed(.5f);
-		tradeTask = new InteractWithPlayer(this);
+		System.out.println("Unmodded: " + this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getAttributeValue());
+		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).applyModifier(new AttributeModifier("Boost largest path distance", 10.0D, 1));
+		System.out.println("Modded: " + this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getAttributeValue());
+		
+		//this.setEntityAttribute
+		//tradeTask = new InteractWithPlayer(this);
 		this.setupAITasks();
 	}
 	
 	private void setWoodBlockTargets(int scanRadiusLW, int scanRadiusHeight){
+		//clear the array each time a new search begins
+		woodBlockTargets.clear();
+		//get the players current coordinates (roughly - could be 1 off due to how doubles round)
 		int xCord = (int) (this.posX);
 		int yCord = (int) (this.posY);
 		int zCord = (int) (this.posZ);
-		System.out.println("Reached");
 		//scan the x coordinates
 		for(int x = -scanRadiusLW;x <= scanRadiusLW;x++){
 			//scan the z coordinates
@@ -56,8 +69,6 @@ public class EntityAIPlayer extends EntityCreature{
 					//if is wood or air break
 					String currentBlock = this.world.getBlockState(new BlockPos(x+xCord,y+yCord,z+zCord)).getBlock().getLocalizedName();
 					if(currentBlock.equals("Wood")){
-						//System.out.println("X: " + x + " Y: " + y + " Z: " + z);
-						//System.out.println("X: " + xCord + " Y: " + yCord + " Z: " + zCord);
 						System.out.println("Found Wood at X: " + (x + xCord) + " Y: " + (y + yCord) + " Z: " + (z+zCord));
 						//add block position to arrayList
 						woodBlockTargets.add(new Location3D(x+xCord,y+yCord,z+zCord));
@@ -73,7 +84,6 @@ public class EntityAIPlayer extends EntityCreature{
 	}
 	
 	private void setupAITasks(){
-		
         //this.tasks.addTask(1, tradeTask);
 	}
 	
@@ -89,7 +99,8 @@ public class EntityAIPlayer extends EntityCreature{
 	private void addLumberjackTasks(ArrayList<Location3D> locations) {
 		//test
 		for(int i = 0; i < locations.size(); i++) {
-			this.tasks.addTask(i+2, new MoveToPositionTask(this,locations.get(i)));
+			Location3D currentLoc = locations.get(i);
+			this.tasks.addTask(i+2, new MoveToPositionTask(this,currentLoc));
 		}
 	}
 	
@@ -110,7 +121,7 @@ public class EntityAIPlayer extends EntityCreature{
         if (!world.isRemote)
         {
             this.setPlayer(player);
-            setWoodBlockTargets(15,5);
+            setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
             //player.openGui(AIMod.instance, ModGUIHandler.MOD_ENTITY_AI_PLAYER_GUI, world, (int) this.posX, (int) this.posY, (int) this.posZ);
             //tradeTask.resetTask();
             addLumberjackTasks(woodBlockTargets);
