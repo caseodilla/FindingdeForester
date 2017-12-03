@@ -30,4 +30,9 @@ public class Location3D {
 		
 		return Math.sqrt((xDist*xDist)+(yDist*yDist)+(zDist*zDist));
 	}
+	
+	@Override
+	public String toString() {
+		return getX() + ", " + getY() + ", " + getZ();
+	}
 }

@@ -7,12 +7,12 @@ import edu.elon.ai.problems.TravelingSalesman;
 public class GeneticAlgorithm {
     /* GA parameters */
     private static final double mutationRate = 0.015;
-    private static final int TravelPathnamentSize = 5;
+    private static final int tournamentSize = 5;
     private static final boolean elitism = true;
 
     // Evolves a TravelingSalesman over one generation
     public static TravelingSalesman evolveTravelingSalesman(TravelingSalesman pop) {
-        TravelingSalesman newTravelingSalesman = new TravelingSalesman(pop.populationSize(), false);
+        TravelingSalesman newTravelingSalesman = new TravelingSalesman(pop.populationSize());
 
         // Keep our best individual if elitism is enabled
         int elitismOffset = 0;
@@ -26,8 +26,8 @@ public class GeneticAlgorithm {
         // Current TravelingSalesman
         for (int i = elitismOffset; i < newTravelingSalesman.populationSize(); i++) {
             // Select parents
-            TravelPath parent1 = TravelPathnamentSelection(pop);
-            TravelPath parent2 = TravelPathnamentSelection(pop);
+            TravelPath parent1 = tournamentSelection(pop);
+            TravelPath parent2 = tournamentSelection(pop);
             // Crossover parents
             TravelPath child = crossover(parent1, parent2);
             // Add child to new TravelingSalesman
@@ -45,7 +45,7 @@ public class GeneticAlgorithm {
     // Applies crossover to a set of parents and creates offspring
     public static TravelPath crossover(TravelPath parent1, TravelPath parent2) {
         // Create new child TravelPath
-        TravelPath child = new TravelPath();
+        TravelPath child = new TravelPath(parent1.pathSize());
 
         // Get start and end sub TravelPath positions for parent1's TravelPath
         int startPos = (int) (Math.random() * parent1.pathSize());
@@ -102,17 +102,17 @@ public class GeneticAlgorithm {
     }
 
     // Selects candidate TravelPath for crossover
-    private static TravelPath TravelPathnamentSelection(TravelingSalesman pop) {
+    private static TravelPath tournamentSelection(TravelingSalesman ts) {
         // Create a TravelPathnament TravelingSalesman
-        TravelingSalesman TravelPathnament = new TravelingSalesman(TravelPathnamentSize, false);
+        TravelingSalesman tournament = new TravelingSalesman(tournamentSize);
         // For each place in the TravelPathnament get a random candidate TravelPath and
         // add it
-        for (int i = 0; i < TravelPathnamentSize; i++) {
-            int randomId = (int) (Math.random() * pop.populationSize());
-            TravelPathnament.savePath(i, pop.getPath(randomId));
+        for (int i = 0; i < tournamentSize; i++) {
+            int randomId = (int) (Math.random() * ts.populationSize());
+            tournament.savePath(i, ts.getPath(randomId));
         }
         // Get the fittest TravelPath
-        TravelPath fittest = TravelPathnament.getFittest();
+        TravelPath fittest = tournament.getFittest();
         return fittest;
     }
 }

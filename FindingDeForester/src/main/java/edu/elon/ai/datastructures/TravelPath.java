@@ -10,17 +10,17 @@ import java.util.Collections;
 public class TravelPath {
 	
 	// holds the travel path
-	private ArrayList tp = new ArrayList<Location3D>();
+	private ArrayList<Location3D> tp = new ArrayList<Location3D>();
 	
 	private double fitness = 0;
 	private int distance = 0;
 	
-	public TravelPath() {
-		for (int i = 0; i<TREES_IN_RANGE; i++) {
+	public TravelPath(int size) {
+		for (int i=0; i<size; i++) {
 			tp.add(null);
 		}
 	}
-	
+		
 	public TravelPath(ArrayList<Location3D> tp) {
 		this.tp = tp;
 	}
@@ -28,7 +28,7 @@ public class TravelPath {
 	// create a random individual
 	public void generateIndividual() {
 		for (int i=0; i<tp.size(); i++) {
-			setLocation(i,TREE_ID);
+			setLocation(i,tp.get(i));
 		}
 		Collections.shuffle(tp);
 	}
@@ -83,5 +83,14 @@ public class TravelPath {
 	// check if a location is already in the path
 	public boolean hasLoc(Location3D loc) {
 		return tp.contains(loc);
+	}
+	
+	@Override
+	public String toString() {
+		String geneString = "|";
+		for (int i=0; i<pathSize(); i++) {
+			geneString += getLocation(i) + "|";
+		}
+		return geneString;
 	}
 }
