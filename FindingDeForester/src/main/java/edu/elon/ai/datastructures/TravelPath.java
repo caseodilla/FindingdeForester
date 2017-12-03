@@ -87,9 +87,9 @@ public class TravelPath {
 	
 	@Override
 	public String toString() {
-		String geneString = "|";
+		String geneString = "";
 		for (int i=0; i<pathSize(); i++) {
-			geneString += getLocation(i) + "|";
+			geneString += "(" + getLocation(i) + "),";
 		}
 		return geneString;
 	}

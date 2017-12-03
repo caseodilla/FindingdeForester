@@ -33,6 +33,6 @@ public class Location3D {
 	
 	@Override
 	public String toString() {
-		return getX() + ", " + getY() + ", " + getZ();
+		return (int)getX() + ", " + (int)getY(); // + ", " + (int)getZ();
 	}
 }
