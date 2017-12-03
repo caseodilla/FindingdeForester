@@ -13,8 +13,9 @@ import com.jcraft.jorbis.Block;
 
 import edu.elon.ai.AIMod;
 import edu.elon.ai.datastructures.Location3D;
+import edu.elon.ai.problems.TravelingSalesman;
 import edu.elon.ai.tasks.InteractWithPlayer;
-import edu.elon.ai.tasks.MoveToPositionTask;
+import edu.elon.ai.tasks.SeekAndDestroyTrees;
 import edu.elon.ai.ui.ModGUIHandler;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -100,7 +101,7 @@ public class EntityAIPlayer extends EntityCreature{
 		//test
 		for(int i = 0; i < locations.size(); i++) {
 			Location3D currentLoc = locations.get(i);
-			this.tasks.addTask(i+2, new MoveToPositionTask(this,currentLoc));
+			this.tasks.addTask(i+2, new SeekAndDestroyTrees(this,currentLoc));
 		}
 	}
 	
@@ -122,8 +123,14 @@ public class EntityAIPlayer extends EntityCreature{
         {
             this.setPlayer(player);
             setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
-            //player.openGui(AIMod.instance, ModGUIHandler.MOD_ENTITY_AI_PLAYER_GUI, world, (int) this.posX, (int) this.posY, (int) this.posZ);
-            //tradeTask.resetTask();
+            Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
+           // TravelingSalesman ts = new TravelingSalesman(currentLoc, woodBlockTargets, true);
+            int numberOfGenerations = (int) (((double) woodBlockTargets.size())/SCAN_RADIUS_LW)*40;
+            System.out.println("Number of Generations: " + numberOfGenerations);
+            for(int i = 0; i < numberOfGenerations;i++) {
+         //   		evolveTravelingSalesman(ts.paths);
+            }
+            //ts.getFittest();
             addLumberjackTasks(woodBlockTargets);
         }
         return true;
