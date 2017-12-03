@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import com.jcraft.jorbis.Block;
 
 import edu.elon.ai.AIMod;
+import edu.elon.ai.algorithms.GeneticAlgorithm;
 import edu.elon.ai.datastructures.Location3D;
 import edu.elon.ai.problems.TravelingSalesman;
 import edu.elon.ai.tasks.InteractWithPlayer;
@@ -124,14 +125,15 @@ public class EntityAIPlayer extends EntityCreature{
             this.setPlayer(player);
             setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
             Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
-           // TravelingSalesman ts = new TravelingSalesman(currentLoc, woodBlockTargets, true);
-            int numberOfGenerations = (int) (((double) woodBlockTargets.size())/SCAN_RADIUS_LW)*40;
+            TravelingSalesman ts = new TravelingSalesman(woodBlockTargets);
+            //int numberOfGenerations = (int) (((double) woodBlockTargets.size())/SCAN_RADIUS_LW)*500;
+            int numberOfGenerations = 500;
             System.out.println("Number of Generations: " + numberOfGenerations);
-            for(int i = 0; i < numberOfGenerations;i++) {
-         //   		evolveTravelingSalesman(ts.paths);
+            for(int i = 0; i < numberOfGenerations; i++) {
+            	ts = GeneticAlgorithm.evolveTravelingSalesman(ts);
             }
-            //ts.getFittest();
-            addLumberjackTasks(woodBlockTargets);
+            
+            addLumberjackTasks(ts.getFittest().getLocations());
         }
         return true;
     }

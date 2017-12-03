@@ -29,8 +29,8 @@ public class TravelingSalesmanTest {
 		locations.add(new Location3D(18,2,0));
 		locations.add(new Location3D(0,17,0));
 		locations.add(new Location3D(8,6,0));
-		TravelingSalesman testSalesman = new TravelingSalesman(locations, true);
-		for (int i=0; i<100; i++) {
+		TravelingSalesman testSalesman = new TravelingSalesman(locations);
+		for (int i=0; i<10000; i++) {
 			testSalesman = GeneticAlgorithm.evolveTravelingSalesman(testSalesman);
 		}
 		System.out.println("||Test Results||");

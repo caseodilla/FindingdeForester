@@ -38,6 +38,11 @@ public class TravelPath {
 		return (Location3D)tp.get(pos);
 	}
 	
+	// get array list of locations
+	public ArrayList<Location3D> getLocations() {
+		return tp;
+	}
+	
 	// set a location at a specific position in the arraylist
 	public void setLocation(int pos, Location3D loc) {
 		tp.set(pos, loc);
@@ -89,7 +94,10 @@ public class TravelPath {
 	public String toString() {
 		String geneString = "";
 		for (int i=0; i<pathSize(); i++) {
-			geneString += "(" + getLocation(i) + "),";
+			geneString += "(" + getLocation(i) + ")";
+			if (i+1<pathSize()) {
+				geneString += ",";
+			}
 		}
 		return geneString;
 	}

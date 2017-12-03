@@ -21,15 +21,13 @@ public class TravelingSalesman {
 	TravelPath[] paths;
 	
 	// create a population
-	public TravelingSalesman(ArrayList<Location3D> locations, boolean initialize) {
+	public TravelingSalesman(ArrayList<Location3D> locations) {
 		paths = new TravelPath[locations.size()*2];
 		// in case we need to init a population of paths
-		if (initialize) {
-			for (int i=0; i<populationSize(); i++) {
-				TravelPath newPath = new TravelPath(locations);
-				newPath.generateIndividual();
-				savePath(i,newPath);
-			}
+		for (int i=0; i<populationSize(); i++) {
+			TravelPath newPath = new TravelPath(locations);
+			newPath.generateIndividual();
+			savePath(i,newPath);
 		}
 	}
 	

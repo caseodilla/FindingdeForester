@@ -6,8 +6,8 @@ import edu.elon.ai.problems.TravelingSalesman;
 
 public class GeneticAlgorithm {
     /* GA parameters */
-    private static final double mutationRate = 0.035;
-    private static final int tournamentSize = 5;
+    private static final double mutationRate = 0.25;
+    private static final int tournamentSize = 10;
     private static final boolean elitism = true;
 
     // Evolves a TravelingSalesman over one generation
