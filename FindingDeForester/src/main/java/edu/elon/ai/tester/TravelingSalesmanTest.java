@@ -1,15 +1,15 @@
-package edu.elon.ai.problems;
+package edu.elon.ai.tester;
 
 import java.util.ArrayList;
 
 import edu.elon.ai.algorithms.GeneticAlgorithm;
 import edu.elon.ai.datastructures.Location3D;
+import edu.elon.ai.datastructures.Population;
+
 import org.junit.Test;
 
 public class TravelingSalesmanTest {
 
-	//this is basically TSP_GA from the website
-	//http://www.theprojectspot.com/tutorial-post/applying-a-genetic-algorithm-to-the-travelling-salesman-problem/5
 	@Test
 	public void test() {
 		ArrayList<Location3D> locations = new ArrayList<Location3D>();
@@ -29,14 +29,14 @@ public class TravelingSalesmanTest {
 		locations.add(new Location3D(18,2,0));
 		locations.add(new Location3D(0,17,0));
 		locations.add(new Location3D(8,6,0));
-		TravelingSalesman testSalesman = new TravelingSalesman(locations);
+		Population population = new Population(locations);
 		for (int i=0; i<10000; i++) {
-			testSalesman = GeneticAlgorithm.evolveTravelingSalesman(testSalesman);
+			population = GeneticAlgorithm.evolvePopulation(population);
 		}
 		System.out.println("||Test Results||");
-		System.out.println("Final distance: " + testSalesman.getFittest().getDistance());
+		System.out.println("Final distance: " + population.getFittest().getDistance());
         System.out.println("Solution:");
-        System.out.println(testSalesman.getFittest());
+        System.out.println(population.getFittest());
 		
 		//fail("Not yet implemented");
 	}

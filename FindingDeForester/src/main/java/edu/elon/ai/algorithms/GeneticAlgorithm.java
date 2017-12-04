@@ -1,78 +1,73 @@
 package edu.elon.ai.algorithms;
 
 import edu.elon.ai.datastructures.Location3D;
+import edu.elon.ai.datastructures.Population;
 import edu.elon.ai.datastructures.TravelPath;
-import edu.elon.ai.problems.TravelingSalesman;
 
 public class GeneticAlgorithm {
-    /* GA parameters */
-    private static final double mutationRate = 0.25;
-    private static final int tournamentSize = 10;
-    private static final boolean elitism = true;
 
-    // Evolves a TravelingSalesman over one generation
-    public static TravelingSalesman evolveTravelingSalesman(TravelingSalesman pop) {
-        TravelingSalesman newTravelingSalesman = new TravelingSalesman(pop.populationSize());
+	//  control the likelihood of mutation
+    private static final double mutationRate = 0.15;
 
-        // Keep our best individual if elitism is enabled
-        int elitismOffset = 0;
-        if (elitism) {
-            newTravelingSalesman.savePath(0, pop.getFittest());
-            elitismOffset = 1;
+    // evolves a population over one generation
+    public static Population evolvePopulation(Population initialPopulation) {
+        Population newPopulation = new Population(initialPopulation.pathSize());
+
+        // save the best path, store it at 0; the rest will begin at index 1
+        newPopulation.savePath(0, initialPopulation.getFittest());
+
+        // use a tournament to pick the parent paths to breed
+        for (int i = 1; i < newPopulation.pathSize(); i++) {
+        	TravelPath p1 = lottery(initialPopulation);
+            TravelPath p2 = lottery(initialPopulation);
+            // breed
+            TravelPath child = breed(p1, p2);
+            
+            //save the new child to the new population
+            newPopulation.savePath(i, child);
         }
 
-        // Crossover TravelingSalesman
-        // Loop over the new TravelingSalesman's size and create individuals from
-        // Current TravelingSalesman
-        for (int i = elitismOffset; i < newTravelingSalesman.populationSize(); i++) {
-            // Select parents
-            TravelPath parent1 = tournamentSelection(pop);
-            TravelPath parent2 = tournamentSelection(pop);
-            // Crossover parents
-            TravelPath child = crossover(parent1, parent2);
-            // Add child to new TravelingSalesman
-            newTravelingSalesman.savePath(i, child);
+        // add some randomness by mutating the population
+        for (int i = 1; i < newPopulation.pathSize(); i++) {
+            mutate(newPopulation.getPath(i));
         }
 
-        // Mutate the new TravelingSalesman a bit to add some new genetic material
-        for (int i = elitismOffset; i < newTravelingSalesman.populationSize(); i++) {
-            mutate(newTravelingSalesman.getPath(i));
-        }
-
-        return newTravelingSalesman;
+        // congratulations! it's a beautiful new population! you must be so proud.
+        // you'll be receiving a bill from the hospital for $1.3mil
+        return newPopulation;
     }
 
-    // Applies crossover to a set of parents and creates offspring
-    public static TravelPath crossover(TravelPath parent1, TravelPath parent2) {
-        // Create new child TravelPath
-        TravelPath child = new TravelPath(parent1.pathSize());
+    // breed a child from two parent paths
+    public static TravelPath breed(TravelPath p1, TravelPath p2) {
+        TravelPath child = new TravelPath(p1.pathSize());
 
-        // Get start and end sub TravelPath positions for parent1's TravelPath
-        int startPos = (int) (Math.random() * parent1.pathSize());
-        int endPos = (int) (Math.random() * parent1.pathSize());
+        // determine where the start and end of p1's path will be
+        int startPos = (int) (Math.random() * p1.pathSize());
+        int endPos = (int) (Math.random() * p1.pathSize());
 
-        // Loop and add the sub TravelPath from parent1 to our child
+        // loop and add the sub TravelPath from p1 to our child
         for (int i = 0; i < child.pathSize(); i++) {
-            // If our start position is less than the end position
+            // if start < end
             if (startPos < endPos && i > startPos && i < endPos) {
-                child.setLocation(i, parent1.getLocation(i));
-            } // If our start position is larger
+                child.setLocation(i, p1.getLocation(i));
+            }
             else if (startPos > endPos) {
                 if (!(i < startPos && i > endPos)) {
-                    child.setLocation(i, parent1.getLocation(i));
+                    child.setLocation(i, p1.getLocation(i));
                 }
             }
         }
 
-        // Loop through parent2's city TravelPath
-        for (int i = 0; i < parent2.pathSize(); i++) {
-            // If child doesn't have the city add it
-            if (!child.hasLoc(parent2.getLocation(i))) {
-                // Loop to find a spare position in the child's TravelPath
-                for (int ii = 0; ii < child.pathSize(); ii++) {
-                    // Spare position found, add city
-                    if (child.getLocation(ii) == null) {
-                        child.setLocation(ii, parent2.getLocation(i));
+        // p2 has a hand in this process too, ya know!
+        // loop through its path, add any missing paths
+        for (int i = 0; i < p2.pathSize(); i++) {
+            // if it's empty at i, take p2's path
+            if (!child.hasLoc(p2.getLocation(i))) {
+                // find a spare position
+                for (int j = 0; j < child.pathSize(); j++) {
+                    // set p2's location to the child's empty location
+                    if (child.getLocation(j) == null) {
+                        child.setLocation(j, p2.getLocation(i));
                         break;
                     }
                 }
@@ -81,38 +76,42 @@ public class GeneticAlgorithm {
         return child;
     }
 
-    // Mutate a TravelPath using swap mutation
-    private static void mutate(TravelPath TravelPath) {
-        // Loop through TravelPath cities
-        for(int TravelPathPos1=0; TravelPathPos1 < TravelPath.pathSize(); TravelPathPos1++){
-            // Apply mutation rate
+    // add some randomness by mutating the path
+    private static void mutate(TravelPath path) {
+    	// iterate over the path
+        for(int pos1=0; pos1 < path.pathSize(); pos1++){
+            // the higher the mutation rate, the more probable the mutation will occur
+        	// if it does occur,
             if(Math.random() < mutationRate){
-                // Get a second random position in the TravelPath
-                int TravelPathPos2 = (int) (TravelPath.pathSize() * Math.random());
+                // then get a second random position in the TravelPath that's different than pos1
+                int pos2 = pos1;
+                while (pos1 == pos2) {
+                	pos2 = (int) (path.pathSize() * Math.random());
+                }
+                
+                // store the locations at each position
+                Location3D loc1 = path.getLocation(pos1);
+                Location3D loc2 = path.getLocation(pos2);
 
-                // Get the cities at target position in TravelPath
-                Location3D loc1 = TravelPath.getLocation(TravelPathPos1);
-                Location3D loc2 = TravelPath.getLocation(TravelPathPos2);
-
-                // Swap them around
-                TravelPath.setLocation(TravelPathPos2, loc1);
-                TravelPath.setLocation(TravelPathPos1, loc2);
+                // switch the paths at each location
+                path.setLocation(pos2, loc1);
+                path.setLocation(pos1, loc2);
             }
         }
     }
 
-    // Selects candidate TravelPath for crossover
-    private static TravelPath tournamentSelection(TravelingSalesman ts) {
-        // Create a TravelPathnament TravelingSalesman
-        TravelingSalesman tournament = new TravelingSalesman(tournamentSize);
-        // For each place in the TravelPathnament get a random candidate TravelPath and
-        // add it
-        for (int i = 0; i < tournamentSize; i++) {
-            int randomId = (int) (Math.random() * ts.populationSize());
-            tournament.savePath(i, ts.getPath(randomId));
+    // lottery to select the fittest of randomly selected paths for breeding
+    private static TravelPath lottery(Population pop) {
+    	// number of lotto winners equals 20% of the population size
+    	int lotterySize = (int)(pop.pathSize()*0.2);
+        Population lottoDrawing = new Population(lotterySize);
+        // and tonight's lucky winners are...
+        for (int i = 0; i < lotterySize; i++) {
+            int rand = (int) (Math.random() * pop.pathSize());
+            lottoDrawing.savePath(i, pop.getPath(rand));
         }
-        // Get the fittest TravelPath
-        TravelPath fittest = tournament.getFittest();
+        // find the fittest path of the lottery winners
+        TravelPath fittest = lottoDrawing.getFittest();
         return fittest;
     }
 }

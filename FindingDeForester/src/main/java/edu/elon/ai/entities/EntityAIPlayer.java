@@ -14,7 +14,7 @@ import com.jcraft.jorbis.Block;
 import edu.elon.ai.AIMod;
 import edu.elon.ai.algorithms.GeneticAlgorithm;
 import edu.elon.ai.datastructures.Location3D;
-import edu.elon.ai.problems.TravelingSalesman;
+import edu.elon.ai.datastructures.Population;
 import edu.elon.ai.tasks.InteractWithPlayer;
 import edu.elon.ai.tasks.SeekAndDestroyTrees;
 import edu.elon.ai.ui.ModGUIHandler;
@@ -33,8 +33,12 @@ public class EntityAIPlayer extends EntityCreature{
 	private EntityPlayer player;
 	
 	//how far should the AI Player look for trees
-	private final int SCAN_RADIUS_LW = 20;
+	private final int SCAN_RADIUS_LW = 40;
 	private final int SCAN_RADIUS_H = 5;
+	
+	//how many generations the algorithm should spawn
+	private final int GENERATIONS = 1000;
+	
 	//InteractWithPlayer tradeTask;
 	
 	public EntityAIPlayer(World worldIn) {
@@ -124,13 +128,10 @@ public class EntityAIPlayer extends EntityCreature{
         {
             this.setPlayer(player);
             setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
-            Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
-            TravelingSalesman ts = new TravelingSalesman(woodBlockTargets);
-            //int numberOfGenerations = (int) (((double) woodBlockTargets.size())/SCAN_RADIUS_LW)*500;
-            int numberOfGenerations = 500;
-            System.out.println("Number of Generations: " + numberOfGenerations);
-            for(int i = 0; i < numberOfGenerations; i++) {
-            	ts = GeneticAlgorithm.evolveTravelingSalesman(ts);
+            //Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
+            Population ts = new Population(woodBlockTargets);
+            for(int i = 0; i < GENERATIONS; i++) {
+            	ts = GeneticAlgorithm.evolvePopulation(ts);
             }
             
             addLumberjackTasks(ts.getFittest().getLocations());

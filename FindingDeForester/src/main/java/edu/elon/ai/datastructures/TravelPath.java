@@ -3,10 +3,6 @@ package edu.elon.ai.datastructures;
 import java.util.ArrayList;
 import java.util.Collections;
 
-//this'll be a lot like the tour class that the website you showed me talked about
-//http://www.theprojectspot.com/tutorial-post/applying-a-genetic-algorithm-to-the-travelling-salesman-problem/5
-//as I'm sure you saw, the tour manager is pretty unnecessary since it just creates unique method names for functionality 
-//already built into arraylist
 public class TravelPath {
 	
 	// holds the travel path
@@ -15,12 +11,14 @@ public class TravelPath {
 	private double fitness = 0;
 	private int distance = 0;
 	
+	// constructor to hold new paths
 	public TravelPath(int size) {
 		for (int i=0; i<size; i++) {
 			tp.add(null);
 		}
 	}
-		
+	
+	// initial constructor when all locations are initially being passed
 	public TravelPath(ArrayList<Location3D> tp) {
 		this.tp = tp;
 	}
@@ -33,9 +31,9 @@ public class TravelPath {
 		Collections.shuffle(tp);
 	}
 	
-	// get a location from the arraylist
-	public Location3D getLocation(int pos) {
-		return (Location3D)tp.get(pos);
+	// get a location from the array list
+	public Location3D getLocation(int i) {
+		return (Location3D)tp.get(i);
 	}
 	
 	// get array list of locations
@@ -44,8 +42,8 @@ public class TravelPath {
 	}
 	
 	// set a location at a specific position in the arraylist
-	public void setLocation(int pos, Location3D loc) {
-		tp.set(pos, loc);
+	public void setLocation(int i, Location3D loc) {
+		tp.set(i, loc);
 		fitness = 0;
 		distance = 0;
 	}
