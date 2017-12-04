@@ -103,7 +103,11 @@ public class GeneticAlgorithm {
     // lottery to select the fittest of randomly selected paths for breeding
     private static TravelPath lottery(Population pop) {
     	// number of lotto winners equals 20% of the population size
-    	int lotterySize = (int)(pop.pathSize()*0.2);
+    		int lotterySize = (int)(pop.pathSize()*0.2);
+    		//for the case where the population isn't at least 5
+    		if(lotterySize==0) {
+    			lotterySize=1;
+    		}
         Population lottoDrawing = new Population(lotterySize);
         // and tonight's lucky winners are...
         for (int i = 0; i < lotterySize; i++) {

@@ -129,12 +129,13 @@ public class EntityAIPlayer extends EntityCreature{
             this.setPlayer(player);
             setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
             //Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
-            Population ts = new Population(woodBlockTargets);
-            for(int i = 0; i < GENERATIONS; i++) {
-            	ts = GeneticAlgorithm.evolvePopulation(ts);
+            if(woodBlockTargets.size()>0) {
+            		Population ts = new Population(woodBlockTargets);
+            		for(int i = 0; i < GENERATIONS; i++) {
+            			ts = GeneticAlgorithm.evolvePopulation(ts);
+            	}
+            	addLumberjackTasks(ts.getFittest().getLocations());
             }
-            
-            addLumberjackTasks(ts.getFittest().getLocations());
         }
         return true;
     }
