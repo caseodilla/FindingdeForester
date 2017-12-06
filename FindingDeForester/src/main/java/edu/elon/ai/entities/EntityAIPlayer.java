@@ -127,18 +127,40 @@ public class EntityAIPlayer extends EntityCreature{
         if (!world.isRemote)
         {
             this.setPlayer(player);
-            setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
-            Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
-            if(woodBlockTargets.size()>0) {
-            		Population ts = new Population(currentLoc,woodBlockTargets);
-            		for(int i = 0; i < GENERATIONS; i++) {
-            			ts = GeneticAlgorithm.evolvePopulation(currentLoc,ts);
-            	}
-            	addLumberjackTasks(ts.getFittest().getLocations());
-            }
+            Thread t = new Thread(new FindOptimalAndAddThread(this));
+            t.start();
+//            setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
+//            Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
+//            if(woodBlockTargets.size()>0) {
+//            		Population ts = new Population(currentLoc,woodBlockTargets);
+//            		for(int i = 0; i < GENERATIONS; i++) {
+//            			ts = GeneticAlgorithm.evolvePopulation(currentLoc,ts);
+//            	}
+//            	addLumberjackTasks(ts.getFittest().getLocations());
+//            }
         }
         return true;
     }
+    
+    //This puts the algorithm and addition of tasks on another thread to reduce lag on the game thread
+    	public class FindOptimalAndAddThread implements Runnable {
+    		//this is a reference to the EntityAIPlayer so the thread can update elements and get information if desired
+    		EntityAIPlayer e;
+    		public FindOptimalAndAddThread(EntityAIPlayer e) {
+    			this.e = e;
+    		}
+    		public void run() {
+                e.setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
+                Location3D currentLoc = new Location3D(e.posX,e.posY,e.posZ);
+                if(e.woodBlockTargets.size()>0) {
+                		Population ts = new Population(currentLoc,woodBlockTargets);
+                		for(int i = 0; i < GENERATIONS; i++) {
+                			ts = GeneticAlgorithm.evolvePopulation(currentLoc,ts);
+                		}
+                		e.addLumberjackTasks(ts.getFittest().getLocations());
+                }
+    		}
+    	}
 	
 	
 

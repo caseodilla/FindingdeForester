@@ -221,7 +221,20 @@ public class TravelingSalesmanTest {
 		locations.add(new Location3D(3,3,3));
 		locations.add(new Location3D(4,4,4));
 		Population population = new Population(playerLocation,locations);
+		//best distance
+		double bestSoFar = population.getFittest().getDistance();
 		for (int i=0; i<10000; i++) {
+			//makes sure it's improving every 100 generations
+			if(i%100 == 0) {
+				double current = population.getFittest().getDistance();
+				//System.out.println("Current Best Distance: " + current);
+				if(bestSoFar < current) {
+					fail("The path did not stay the same or improve");
+				}
+				else {
+					bestSoFar = population.getFittest().getDistance();
+				}
+			}
 			population = GeneticAlgorithm.evolvePopulation(playerLocation,population);
 		}
 		System.out.println("||Test Results - Effectiveness Test||");
