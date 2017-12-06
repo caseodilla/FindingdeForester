@@ -7,10 +7,10 @@ import edu.elon.ai.datastructures.TravelPath;
 public class GeneticAlgorithm {
 
 	//  control the likelihood of mutation
-    private static final double mutationRate = 0.15;
+    private static final double mutationRate = 0.05;
 
     // evolves a population over one generation
-    public static Population evolvePopulation(Population initialPopulation) {
+    public static Population evolvePopulation(Location3D startingLoc, Population initialPopulation) {
         Population newPopulation = new Population(initialPopulation.pathSize());
 
         // save the best path, store it at 0; the rest will begin at index 1
@@ -39,7 +39,7 @@ public class GeneticAlgorithm {
 
     // breed a child from two parent paths
     public static TravelPath breed(TravelPath p1, TravelPath p2) {
-        TravelPath child = new TravelPath(p1.pathSize());
+        TravelPath child = new TravelPath(p1.getStartingLocation(),p1.pathSize());
 
         // determine where the start and end of p1's path will be
         int startPos = (int) (Math.random() * p1.pathSize());

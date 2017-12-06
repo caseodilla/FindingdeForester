@@ -34,6 +34,6 @@ public class Location3D {
 	// useful string output for testing and debugging; organizes locations into sets of coordinates
 	@Override
 	public String toString() {
-		return (int)getX() + "," + (int)getY(); // + ", " + (int)getZ();
+		return (int)getX() + "," + (int)getY() + "," + (int)getZ();
 	}
 }

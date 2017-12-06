@@ -8,11 +8,11 @@ public class Population {
 	TravelPath[] paths;
 	
 	// create a population
-	public Population(ArrayList<Location3D> locations) {
+	public Population(Location3D startingLocation, ArrayList<Location3D> locations) {
 		paths = new TravelPath[locations.size()];
 		// in case we need to init a population of paths
 		for (int i=0; i<pathSize(); i++) {
-			TravelPath newPath = new TravelPath(locations);
+			TravelPath newPath = new TravelPath(startingLocation, locations);
 			newPath.generateIndividual();
 			savePath(i,newPath);
 		}

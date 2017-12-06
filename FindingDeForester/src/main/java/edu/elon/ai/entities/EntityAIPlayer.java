@@ -33,7 +33,7 @@ public class EntityAIPlayer extends EntityCreature{
 	private EntityPlayer player;
 	
 	//how far should the AI Player look for trees
-	private final int SCAN_RADIUS_LW = 40;
+	private final int SCAN_RADIUS_LW = 20;
 	private final int SCAN_RADIUS_H = 5;
 	
 	//how many generations the algorithm should spawn
@@ -128,11 +128,11 @@ public class EntityAIPlayer extends EntityCreature{
         {
             this.setPlayer(player);
             setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
-            //Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
+            Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
             if(woodBlockTargets.size()>0) {
-            		Population ts = new Population(woodBlockTargets);
+            		Population ts = new Population(currentLoc,woodBlockTargets);
             		for(int i = 0; i < GENERATIONS; i++) {
-            			ts = GeneticAlgorithm.evolvePopulation(ts);
+            			ts = GeneticAlgorithm.evolvePopulation(currentLoc,ts);
             	}
             	addLumberjackTasks(ts.getFittest().getLocations());
             }
