@@ -1,10 +1,13 @@
 package edu.elon.ai.tasks;
-
+/**
+ * @author James Greenwell & Casey Hayes
+ * 
+ * This class uses code from:
+ * https://bedrockminer.jimdo.com/modding-tutorials/
+ */
 import java.util.HashSet;
 
 import edu.elon.ai.datastructures.Location3D;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.math.BlockPos;

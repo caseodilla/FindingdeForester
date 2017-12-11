@@ -1,4 +1,10 @@
 package edu.elon.ai.datastructures;
+
+/**
+ * @author James Greenwell & Casey Hayes
+ * 
+ */
+
 //A 3D coordinate object
 public class Location3D {
 	//this makes the variables thread safe

@@ -1,8 +1,12 @@
 package edu.elon.ai;
-
+/**
+ * @author James Greenwell & Casey Hayes
+ * 
+ * This class uses code from:
+ * https://bedrockminer.jimdo.com/modding-tutorials/
+ */
 import edu.elon.ai.entities.ModEntities;
 import edu.elon.ai.proxy.CommonProxy;
-import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;

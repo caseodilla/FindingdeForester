@@ -1,5 +1,9 @@
 package edu.elon.ai.algorithms;
-
+/**
+ * @author James Greenwell & Casey Hayes
+ * 
+ * The main part of the genetic algorithm
+ */
 import edu.elon.ai.datastructures.Location3D;
 import edu.elon.ai.datastructures.Population;
 import edu.elon.ai.datastructures.TravelPath;

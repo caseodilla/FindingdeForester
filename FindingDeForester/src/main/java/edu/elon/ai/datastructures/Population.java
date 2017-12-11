@@ -1,5 +1,9 @@
 package edu.elon.ai.datastructures;
 
+/**
+ * @author James Greenwell & Casey Hayes
+ */
+
 import java.util.ArrayList;
 
 public class Population {

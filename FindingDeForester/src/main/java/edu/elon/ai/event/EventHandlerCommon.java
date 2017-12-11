@@ -1,13 +1,18 @@
 package edu.elon.ai.event;
 
+/**
+ * @author James Greenwell & Casey Hayes
+ * 
+ * This class uses code from:
+ * https://bedrockminer.jimdo.com/modding-tutorials/
+ */
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import org.lwjgl.input.Keyboard;
-
 import edu.elon.ai.entities.EntityAIPlayer;
+
 //used to subscribe to events, and perform actions when those events occure
 public class EventHandlerCommon {
 	

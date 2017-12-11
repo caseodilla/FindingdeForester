@@ -1,4 +1,10 @@
 package edu.elon.ai.entities;
+/**
+ * @author James Greenwell & Casey Hayes
+ * 
+ * This class uses code from:
+ * https://bedrockminer.jimdo.com/modding-tutorials/
+ */
 
 import edu.elon.ai.AIMod;
 import edu.elon.ai.Reference;

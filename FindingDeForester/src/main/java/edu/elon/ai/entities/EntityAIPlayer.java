@@ -1,25 +1,22 @@
 package edu.elon.ai.entities;
 
+/**
+ * @author James Greenwell & Casey Hayes
+ * 
+ * Most of this code was taken from the EntityCreature superclass
+ */
+
 import java.util.ArrayList;
-
 import javax.annotation.Nullable;
-
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import com.jcraft.jorbis.Block;
-
-import edu.elon.ai.AIMod;
 import edu.elon.ai.algorithms.GeneticAlgorithm;
 import edu.elon.ai.datastructures.Location3D;
 import edu.elon.ai.datastructures.Population;
 import edu.elon.ai.tasks.SeekAndDestroyTrees;
-import edu.elon.ai.ui.ModGUIHandler;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAITradePlayer;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
@@ -92,6 +89,7 @@ public class EntityAIPlayer extends EntityCreature{
         //this.tasks.addTask(1, tradeTask);
 	}
 	
+	@SuppressWarnings("unused")
 	private void clearAITasks(){
 		
 	}
@@ -128,15 +126,6 @@ public class EntityAIPlayer extends EntityCreature{
             this.setPlayer(player);
             Thread t = new Thread(new FindOptimalAndAddThread(this));
             t.start();
-//            setWoodBlockTargets(SCAN_RADIUS_LW,SCAN_RADIUS_H);
-//            Location3D currentLoc = new Location3D(this.posX,this.posY,this.posZ);
-//            if(woodBlockTargets.size()>0) {
-//            		Population ts = new Population(currentLoc,woodBlockTargets);
-//            		for(int i = 0; i < GENERATIONS; i++) {
-//            			ts = GeneticAlgorithm.evolvePopulation(currentLoc,ts);
-//            	}
-//            	addLumberjackTasks(ts.getFittest().getLocations());
-//            }
         }
         return true;
     }

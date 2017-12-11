@@ -1,6 +1,7 @@
 package edu.elon.ai;
-
-import java.nio.file.Paths;
+/**
+ * @author James Greenwell & Casey Hayes
+ */
 //A file of references for the mod, and Minecraft
 public class Reference {
 	
