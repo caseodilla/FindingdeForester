@@ -9,7 +9,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
+//This task destroys the tree at the given location, after moving the entity to that location
 public class SeekAndDestroyTrees extends EntityAIBase{
 	
 	private final double MOVE_THRESHOLD = 2.0;

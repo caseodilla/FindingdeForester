@@ -1,5 +1,5 @@
 package edu.elon.ai.datastructures;
-
+//A 3D coordinate object
 public class Location3D {
 	//this makes the variables thread safe
 	private final double xCord;
@@ -11,18 +11,22 @@ public class Location3D {
 		zCord = z;
 	}
 	
+	//get the X coordinate
 	public double getX(){
 		return xCord;
 	}
 	
+	//get the Y coordinate
 	public double getY(){
 		return yCord;
 	}
 	
+	//get the Z coordinate
 	public double getZ(){
 		return zCord;
 	}
 	
+	//get the distance between two points
 	public double distanceTo(Location3D loc) {
 		double xDist = Math.abs(this.getX() - loc.getX());
 		double yDist = Math.abs(this.getY() - loc.getY());

@@ -15,7 +15,6 @@ import edu.elon.ai.AIMod;
 import edu.elon.ai.algorithms.GeneticAlgorithm;
 import edu.elon.ai.datastructures.Location3D;
 import edu.elon.ai.datastructures.Population;
-import edu.elon.ai.tasks.InteractWithPlayer;
 import edu.elon.ai.tasks.SeekAndDestroyTrees;
 import edu.elon.ai.ui.ModGUIHandler;
 import net.minecraft.entity.EntityCreature;
@@ -26,7 +25,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
+//This is the AI Player's class, where the actual setup takes place
 public class EntityAIPlayer extends EntityCreature{
 	
 	private ArrayList<Location3D> woodBlockTargets;
@@ -37,7 +36,7 @@ public class EntityAIPlayer extends EntityCreature{
 	private final int SCAN_RADIUS_H = 5;
 	
 	//how many generations the algorithm should spawn
-	private final int GENERATIONS = 1000;
+	private final int MAX_GENERATIONS = 150000;
 	
 	//InteractWithPlayer tradeTask;
 	
@@ -154,7 +153,9 @@ public class EntityAIPlayer extends EntityCreature{
                 Location3D currentLoc = new Location3D(e.posX,e.posY,e.posZ);
                 if(e.woodBlockTargets.size()>0) {
                 		Population ts = new Population(currentLoc,woodBlockTargets);
-                		for(int i = 0; i < GENERATIONS; i++) {
+                		int generations =  (int) ((.5*Math.pow(Math.E, e.woodBlockTargets.size()))%MAX_GENERATIONS);
+                		System.out.println("Generations");
+                		for(int i = 0; i < generations; i++) {
                 			ts = GeneticAlgorithm.evolvePopulation(currentLoc,ts);
                 		}
                 		e.addLumberjackTasks(ts.getFittest().getLocations());

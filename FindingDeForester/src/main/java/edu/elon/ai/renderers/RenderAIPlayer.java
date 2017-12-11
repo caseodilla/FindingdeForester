@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-
+//This class is solely for rendering the EntityAIPlayer
 public class RenderAIPlayer extends RenderBiped{
 
 	protected ResourceLocation aiPlayerTexture;

@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
+//This class is used to register mod entities
 public class ModEntities {
 	public static void registerEntities() {
 		registerEntity(EntityAIPlayer.class,"AI_NPC",80,3,true,0x008B8B,0xDAA520);

@@ -15,11 +15,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-
+//This class is unnecessary now, but was initially going to be used for putting an item in game
 @ObjectHolder(Reference.MOD_ID)
 public final class ModItems {
 	
-	public static final Item AI_EGG = new SpawnEggItem("LumberJack_Egg");
+	//public static final Item AI_EGG = new SpawnEggItem("LumberJack_Egg");
 	
 	//Register the items and store them
 	@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
@@ -31,11 +31,6 @@ public final class ModItems {
 		@SubscribeEvent
 		public static void registerItems(final RegistryEvent.Register<Item> event) {
 			final IForgeRegistry<Item> registry = event.getRegistry();
-			//name the item
-//			AI_EGG.setRegistryName(Reference.MOD_ID,Reference.AI_EGG_REGISTRY_NAME);
-//			//register the item
-//			registry.register(AI_EGG);
-//			ITEMS.add(AI_EGG);
 		}
 
 	}

@@ -15,7 +15,7 @@ public class GeneticAlgorithm {
 
         // save the best path, store it at 0; the rest will begin at index 1
         newPopulation.savePath(0, initialPopulation.getFittest());
-
+        
         // use a tournament to pick the parent paths to breed
         for (int i = 1; i < newPopulation.pathSize(); i++) {
         	TravelPath p1 = lottery(initialPopulation);

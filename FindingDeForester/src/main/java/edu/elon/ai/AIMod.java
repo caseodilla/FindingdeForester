@@ -11,8 +11,13 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS)
+/*
+ * Hey Shannon! All of the stuff in this class was based on tutorials on this web page:
+ * https://bedrockminer.jimdo.com/modding-tutorials/
+ * These and a bunch of other classes are just setup classes for a Minecraft Mod
+ */
 
+@Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS)
 public class AIMod
 {
 	@Instance

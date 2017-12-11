@@ -1,7 +1,7 @@
 package edu.elon.ai;
 
 import java.nio.file.Paths;
-
+//A file of references for the mod, and Minecraft
 public class Reference {
 	
 	public static final String MOD_ID = "eaim";

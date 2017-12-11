@@ -9,7 +9,7 @@ import edu.elon.ai.datastructures.Location3D;
 import edu.elon.ai.datastructures.Population;
 
 import org.junit.Test;
-
+//For testing the stability of our genetic algorithm
 public class TravelingSalesmanTest {
 
 	@Test
@@ -32,13 +32,13 @@ public class TravelingSalesmanTest {
 		locations.add(new Location3D(0,17,0));
 		locations.add(new Location3D(8,6,0));
 		Population population = new Population(playerLocation,locations);
-		for (int i=0; i<10000; i++) {
+		for (int i=0; i<5000; i++) {
 			population = GeneticAlgorithm.evolvePopulation(playerLocation,population);
 		}
-		System.out.println("||Test Results||");
-		System.out.println("Final distance: " + population.getFittest().getDistance());
-        System.out.println("Solution:");
-        System.out.println(population.getFittest());
+//		System.out.println("||Test Results||");
+//		System.out.println("Final distance: " + population.getFittest().getDistance());
+//        System.out.println("Solution:");
+//        System.out.println(population.getFittest());
 		
 		//fail("Not yet implemented");
 	}
@@ -79,9 +79,9 @@ public class TravelingSalesmanTest {
 		Population population = new Population(playerLocation, locations);
 		//best distance
 		double bestSoFar = population.getFittest().getDistance();
-		for (int i=0; i<12000; i++) {
+		for (int i=0; i<2000; i++) {
 			//makes sure it's improving every 100 generations
-			if(i%100 == 0) {
+			if(i%1000 == 0) {
 				double current = population.getFittest().getDistance();
 				//System.out.println("Current Best Distance: " + current);
 				if(bestSoFar < current) {
@@ -135,9 +135,9 @@ public class TravelingSalesmanTest {
 		Population population = new Population(playerLocation, locations);
 		//best distance
 		double bestSoFar = population.getFittest().getDistance();
-		for (int i=0; i<12000; i++) {
+		for (int i=0; i<2000; i++) {
 			//makes sure it's improving every 100 generations
-			if(i%100 == 0) {
+			if(i%1000 == 0) {
 				double current = population.getFittest().getDistance();
 				//System.out.println("Current Best Distance: " + current);
 				if(bestSoFar < current) {
@@ -191,7 +191,7 @@ public class TravelingSalesmanTest {
 		Population population = new Population(playerLocation, locations);
 		//best distance
 		double bestSoFar = population.getFittest().getDistance();
-		for (int i=0; i<12000; i++) {
+		for (int i=0; i<2000; i++) {
 			//makes sure it's improving every 100 generations
 			if(i%100 == 0) {
 				double current = population.getFittest().getDistance();
@@ -223,7 +223,7 @@ public class TravelingSalesmanTest {
 		Population population = new Population(playerLocation,locations);
 		//best distance
 		double bestSoFar = population.getFittest().getDistance();
-		for (int i=0; i<10000; i++) {
+		for (int i=0; i<1000; i++) {
 			//makes sure it's improving every 100 generations
 			if(i%100 == 0) {
 				double current = population.getFittest().getDistance();
@@ -237,10 +237,10 @@ public class TravelingSalesmanTest {
 			}
 			population = GeneticAlgorithm.evolvePopulation(playerLocation,population);
 		}
-		System.out.println("||Test Results - Effectiveness Test||");
-		System.out.println("Final distance: " + population.getFittest().getDistance());
-        System.out.println("Solution:");
-        System.out.println(population.getFittest());
+//		System.out.println("||Test Results - Effectiveness Test||");
+//		System.out.println("Final distance: " + population.getFittest().getDistance());
+//        System.out.println("Solution:");
+//        System.out.println(population.getFittest());
 		
 		//fail("Not yet implemented");
 	}
