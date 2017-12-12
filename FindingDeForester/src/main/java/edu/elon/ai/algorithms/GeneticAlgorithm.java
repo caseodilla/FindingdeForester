@@ -11,7 +11,7 @@ import edu.elon.ai.datastructures.TravelPath;
 public class GeneticAlgorithm {
 
 	//  control the likelihood of mutation
-    private static final double mutationRate = 0.05;
+    private static double mutationRate = 0.05;
 
     // evolves a population over one generation
     public static Population evolvePopulation(Location3D startingLoc, Population initialPopulation) {
@@ -121,5 +121,13 @@ public class GeneticAlgorithm {
         // find the fittest path of the lottery winners
         TravelPath fittest = lottoDrawing.getFittest();
         return fittest;
+    }
+    
+    public static double getMutation() {
+    	return mutationRate;
+    }
+    
+    public static void setMutation(double rate) {
+    	mutationRate = rate;
     }
 }
